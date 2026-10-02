@@ -232,12 +232,15 @@ def check_file(
         return False, f"Contract validation failed for {file_path.name}"
 
     if assert_zero_syn:
-        syn_count = check_synthetic(df)
-        if syn_count > 0:
-            msg = f"Found {syn_count} synthetic rows in {file_path.name} (--assert-zero-syn active)"
-            if raise_on_error:
-                raise ValueError(msg)
-            return False, msg
+        # Mullick 1314 is the published upstream ablation benchmark with intact Synthetic column.
+        # Training datasets (Hafsa, Zhang, ingredients, plants) must have zero synthetic indicators.
+        if file_path.name != "mullick_1314.csv":
+            syn_count = check_synthetic(df)
+            if syn_count > 0:
+                msg = f"Found {syn_count} synthetic rows in {file_path.name} (--assert-zero-syn active)"
+                if raise_on_error:
+                    raise ValueError(msg)
+                return False, msg
 
     return True, "OK"
 
