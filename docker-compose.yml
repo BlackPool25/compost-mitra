@@ -1,0 +1,14 @@
+services:
+  app:
+    build: .
+    image: compostmitra:s1
+    ports:
+      - "8501:8501"
+    restart: unless-stopped
+
+  datacheck-gate:
+    build: .
+    image: compostmitra:s1
+    depends_on:
+      - app
+    command: ["python", "scripts/datacheck.py", "--strict"]
