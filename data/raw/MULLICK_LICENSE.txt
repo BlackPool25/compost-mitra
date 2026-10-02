@@ -1,0 +1,10 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+Dataset: Compost Maturity and Emission Monitoring Dataset
+Author: Mahathir Monjur Mullick (mmullick212057)
+Source: https://www.kaggle.com/datasets/mmullick212057/compost-maturity-and-emission-monitoring-dataset
+Conference: ACM NSysS 2025
+Code Reference: mmullick212057/compost-maturity-prediction-code-acm-nsyss-25
+
+Licensed under the Creative Commons Attribution 4.0 International License:
+https://creativecommons.org/licenses/by/4.0/
