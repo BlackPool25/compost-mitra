@@ -1,0 +1,4 @@
+id,name,group,C,N,N_pct,P_pct,K_pct,moist_pct,dph,source
+dry_leaves,Dry Leaves,Brown,38.4,0.72,0.9,0.2,0.5,20.0,-0.5,Cornell
+grass,Grass Clippings,Green,11.25,0.625,2.5,0.5,1.2,75.0,0.5,Cornell
+veg_scraps,Vegetable Scraps,Green,12.0,0.6,2.0,0.4,1.0,70.0,0.0,Literature

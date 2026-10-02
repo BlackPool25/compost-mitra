@@ -1,0 +1,2 @@
+id,name,group,C,N,N_pct,P_pct,K_pct,moist_pct,dph,source
+bad_npk_1,Excess Nitrogen,Green,40.0,2.0,15.5,0.5,1.0,60.0,0.0,Test
