@@ -1,0 +1,12 @@
+# COMPOSTMITRA USB BACKUP MANIFEST
+# Generated for M1 Foundation Gate Rehearsal
+# File naming constraints: Strict FAT32 (alphanumeric, underscores, short extension)
+# Format: SHA256  SIZE_BYTES  FILENAME
+#------------------------------------------------------------------------------
+56e0b13c13f0f14c8f8ae406ab5766343faaedad1da932544febb782bcf1da0f       16116  EDA_REPORT.HTM
+d3a59bca0ff402c5d1074b0d14151030cdbc9e67cf8b570e9fe904071b99bae8        3402  ROSE_RECIPE.PDF
+1c03c2c9ebde2099efaf04e980306a44f8e998a6849feffab8fbc0cfa465bbae        3368  SPINACH_RECIPE.PDF
+240a16be59266003ebc396c7746393f07a12cd1c1263a4e08f47242931a1be46        3278  TOMATO_RECIPE.HTM
+ef80069d9e362754995aa7d6e49f39ba5991d54779aea2ebbcd81dd0fc8f8abb        3431  TOMATO_RECIPE.PDF
+#------------------------------------------------------------------------------
+# Total files in backup: 5
