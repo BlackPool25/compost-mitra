@@ -1,0 +1,16 @@
+id,name,family,N_lo,N_hi,P_lo,P_hi,K_lo,K_hi,pH_lo,pH_hi,stage_note,P_cap,source
+tomato,Tomato,Solanaceae,1.50,2.40,0.30,0.80,1.20,2.40,6.00,6.80,High N in vegetative stage; cut N and boost P/K at flower and fruit-set to avoid foliage-only growth,0.90,ICAR Tomato Package; UGA Extension Veg Guide
+spinach,Spinach,Amaranthaceae,2.00,3.00,0.30,0.60,1.20,2.00,6.20,7.00,Nitrogen demand sustained throughout harvest; avoid excessive potassium to prevent salt stress,0.70,TNAU Agritech Spinach Portal; FAO Fertilizer Specs
+coriander,Coriander,Apiaceae,1.60,2.40,0.25,0.55,1.00,1.80,6.00,7.00,Moderate vegetative nitrogen requirement; avoid high phosphorus early to retard premature bolting,0.65,ICAR Spices & Culinary Herbs; TNAU Portal
+chilli,Green Chilli,Solanaceae,1.60,2.50,0.35,0.85,1.20,2.20,6.00,6.80,Moderate N during early canopy; restrict N during flowering; increase K during fruit maturation,0.95,ICAR Vegetable Guidelines; TNAU Agritech Chilli
+brinjal,Brinjal,Solanaceae,1.70,2.60,0.35,0.85,1.30,2.30,5.80,6.80,Heavy feeder; reduce N application at bud initiation; supply steady K throughout fruiting flushes,0.95,ICAR Vegetable Production; TNAU Portal
+rose,Rose,Rosaceae,1.40,2.20,0.40,0.90,1.50,2.60,6.00,6.80,Pruning flush requires balanced N; switch to elevated P and K upon bud swell for stem rigidity,1.00,Royal Horticultural Society Rose Care; ICAR Floriculture
+hibiscus,Hibiscus,Malvaceae,1.50,2.20,0.20,0.50,1.60,2.80,6.00,6.80,Phosphorus sensitive; high P causes leaf chlorosis; requires high potassium for continual blooms,0.60,American Hibiscus Society; TNAU Floriculture
+marigold,Marigold,Asteraceae,1.40,2.20,0.30,0.70,1.20,2.00,6.20,7.20,Excess nitrogen produces dense foliage with sparse flowering; maintain high P/K at flower bud stage,0.80,ICAR Floriculture Portal; TNAU Commercial Flowers
+tulsi,Holy Basil,Lamiaceae,1.20,1.90,0.25,0.55,0.90,1.60,6.00,7.50,Lean fertility crop; pinch flower spikes to prolong vegetative leaf harvest; avoid fertilizer scorch,0.65,CIMAP Medicinal Plants Bulletin; TNAU Herbs
+mint,Garden Mint,Lamiaceae,1.80,2.60,0.25,0.60,1.10,2.00,6.00,7.00,Frequent moisture and steady vegetative N promote tender runner leaves; cut back before flowering,0.70,CIMAP Aromatic Crop Guide; RHS Herbs
+money_plant,Money Plant,Araceae,1.20,1.80,0.20,0.50,0.80,1.50,6.00,7.00,Indoor foliage climber; modest nutritional demand; high nitrogen causes leggy petioles,0.60,UGA Extension Indoor Foliage Plants; RHS Houseplants
+carrot,Carrot,Apiaceae,1.20,1.90,0.40,0.90,1.50,2.60,6.00,6.80,Root development prioritizes P and K; excess nitrogen induces root forking and hairy root defects,1.00,ICAR Tuber & Root Crops; FAO Vegetable Production
+beans,French Beans,Fabaceae,0.90,1.60,0.40,0.90,1.20,2.20,6.00,6.80,Symbiotic rhizobia fix atmospheric nitrogen; excess external N inhibits nodulation; focus on P/K,1.00,ICAR Pulse Guidelines; D1 Legume Cluster Reference
+banana,Dwarf Banana,Musaceae,1.80,2.80,0.30,0.75,2.00,3.50,5.80,6.80,Heavy potassium consumer; transition to intensive K feeding at shooting and finger filling,0.85,NRC Banana Trichy; D1 Crop Recommendation Kaggle Centroid
+papaya,Papaya,Caricaceae,1.60,2.50,0.35,0.80,1.60,2.80,6.00,6.80,Continuous bearer; balance N and K at onset of flowering; avoid waterlogging and root zone salt buildup,0.90,TNAU Horticulture Portal; D1 Crop Recommendation Kaggle Centroid
