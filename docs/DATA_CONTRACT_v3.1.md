@@ -108,3 +108,9 @@ $$\text{ph} = 7.0 + \sum w_i \cdot \text{dph}_i \times 0.35$$
 - **M1 Gate:** Blender Cornell 30:1 test ($\pm 2$), `check_keys.py` green, `datacheck.py --strict` green.
 - **M2 Gate:** Group-5-fold accuracy beats majority baseline by +5pp; shuffled-y control $\approx 0$; cross-dataset table evaluated.
 - **M3 Gate:** End-to-end tomato scenario verification; non-zero LOO delta; tier footnotes on UI cards.
+
+---
+
+> **Tier Footnote:** `T1 REAL | LIT calc | D1 proxy`  
+> **Model Disclaimer:** Supplement, builds soil — not fertilizer replacement. Model estimates reflect statistical associations on historical proxy data (sanity check, not proof).
+
