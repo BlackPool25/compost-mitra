@@ -1,0 +1,8 @@
+data/raw/
+.venv/
+usb_backup/
+.git/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
