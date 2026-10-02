@@ -1,0 +1,22 @@
+contract_key,hafsa_col,mullick_col,zhang_col,li_col,factor,notes
+cn,C/N Ratio,C/N Ratio,Initial C/N (%),C/N,1.0,Dry-basis C/N ratio (unitless)
+ph,pH,pH,Initial pH,pH,1.0,Standard pH scale [0.0 - 14.0]
+moist_pct,MC(%),MC(%),Initial Moisture Content (%),Moisture Content (%),1.0,Moisture percentage [0.0 - 100.0%]
+temp,Temperature,Temperature,,Temperature,1.0,Internal pile temperature (°C)
+day,Day,Day,Period (d),Composting Time (d),1.0,Elapsed composting duration in days
+nh3,Ammonia(mg/kg),Ammonia(mg/kg),,NH4+-N (mg/kg),1.0,Ammonium/ammonia concentration (mg/kg dry-basis)
+no3,Nitrate(mg/kg),Nitrate(mg/kg),,NO3--N (mg/kg),1.0,Nitrate concentration (mg/kg dry-basis)
+tn,TN(%),TN(%),,TN (%),1.0,Total nitrogen percentage (% dry-basis) [0.0 - 10.0%]
+toc,TOC(%),TOC(%),,TOC (%),1.0,Total organic carbon percentage (% dry-basis)
+ec,EC(ms/cm),EC(ms/cm),,EC (mS/cm),1.0,Electrical conductivity (mS/cm)
+om,OM(%),OM(%),,OM (%),1.0,Organic matter percentage (%)
+gi,GI(%),GI(%),Final GI (%),GI (%),1.0,Maturity target: Germination index percentage
+gi_initial,,,Initial GI (%),,1.0,Initial feedstock germination index percentage
+t_value,T Value,T Value,,,1.0,Stability index T value (C/N final / C/N initial)
+score,Score,Score,,,1.0,Composite maturity score percentage
+batch_key,Batch,Batch,study_id,batch_id,1.0,Unified experimental batch/study identifier for GroupKFold validation
+source,source,Source,source,source,1.0,Dataset provenance and real/synthetic indicator
+turning_times,,Turning times,Turning times,,1.0,Pile turning frequency
+compost_volume_m3,,,Compost volume (m3),,1.0,Compost reactor/pile volume (m3)
+m1_is_enclosed,,,M1_is Enclosed,,1.0,Binary flag: reactor enclosure status
+composting_method,,, Composting Method,,1.0,Composting facility method category
