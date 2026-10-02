@@ -22,6 +22,7 @@ data/raw/*
 !data/raw/*LICENSE*
 data/quarantine/*
 !data/quarantine/.gitkeep
+!data/quarantine/quarantine_manifest.json
 
 # Backups
 usb_backup/

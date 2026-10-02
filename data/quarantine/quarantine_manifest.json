@@ -1,0 +1,38 @@
+{
+  "manifest_version": "1.0",
+  "updated_at": "2026-10-02T10:15:00Z",
+  "quarantined_rows_count": 0,
+  "quarantine_file": null,
+  "datasets_checked": [
+    {
+      "dataset": "hafsa_452",
+      "file": "data/clean/hafsa_452.csv",
+      "rows_total": 452,
+      "rows_quarantined": 0,
+      "null_count": 0,
+      "out_of_range_count": 0,
+      "status": "PASS"
+    },
+    {
+      "dataset": "mullick_1314",
+      "file": "data/clean/mullick_1314.csv",
+      "rows_total": 1314,
+      "rows_quarantined": 0,
+      "null_count": 0,
+      "out_of_range_count": 0,
+      "status": "PASS"
+    },
+    {
+      "dataset": "zhang_848",
+      "file": "data/clean/zhang_848.csv",
+      "rows_total": 310,
+      "rows_quarantined": 0,
+      "null_count": 0,
+      "out_of_range_count": 0,
+      "status": "PASS"
+    }
+  ],
+  "quarantine_rule": "Out-of-range rows or bad null rows must be quarantined to data/quarantine/ with quarantine_manifest.json updated, never deleted silently.",
+  "status": "CLEAN",
+  "notes": "All 452 rows in hafsa_452, 1314 rows in mullick_1314, and 310 rows in zhang_848 passed strict contract v3.1 range validation and empirical physical boundaries. Zero rows were quarantined."
+}
