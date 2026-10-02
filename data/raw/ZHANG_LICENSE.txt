@@ -1,0 +1,10 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+Dataset: Composting strategy optimization dataset
+Authors: Lu Zhang, Junyu Yang, Junjie Liu, Qishun Zhou, Xuan Wang, Haodi Zhang, Yazhan Ren, Zhaohai Bai, Lin Ma
+Publication: Nature Food (2026), DOI: 10.1038/s43016-026-01361-w
+Zenodo Archive: https://zenodo.org/api/records/19677024 (DOI: 10.5281/zenodo.19677024)
+GitHub Code & Data: https://github.com/junyuyang7/Composting_strategy_optimization
+
+Licensed under the Creative Commons Attribution 4.0 International License:
+https://creativecommons.org/licenses/by/4.0/

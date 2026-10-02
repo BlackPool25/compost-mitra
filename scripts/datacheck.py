@@ -212,6 +212,22 @@ def check_file(
             raise ValueError(msg) from e
         return False, msg
 
+    is_raw = "raw" in file_path.parts
+    if is_raw:
+        # Raw datasets have upstream external schemas (e.g. D1 soil kg/ha).
+        # Contract ranges apply to clean data and recipe blend tables, not raw files.
+        if assert_zero_syn:
+            # Mullick 1314 is the published upstream ablation benchmark with intact Synthetic column.
+            # Other raw datasets must have zero synthetic indicators.
+            if file_path.name != "mullick_1314.csv":
+                syn_count = check_synthetic(df)
+                if syn_count > 0:
+                    msg = f"Found {syn_count} synthetic rows in {file_path.name} (--assert-zero-syn active)"
+                    if raise_on_error:
+                        raise ValueError(msg)
+                    return False, msg
+        return True, "OK"
+
     if not check(df, raise_on_error=raise_on_error):
         return False, f"Contract validation failed for {file_path.name}"
 
@@ -244,6 +260,9 @@ def collect_csv_files(paths: list[str]) -> list[Path]:
             elif p.is_dir():
                 for sub in p.glob("**/*.csv"):
                     if sub.is_file():
+                        # When scanning data/ root directory, skip uncleaned raw datasets
+                        if p.name == "data" and "raw" in sub.parts:
+                            continue
                         collected.add(sub.resolve())
     return sorted(collected)
 

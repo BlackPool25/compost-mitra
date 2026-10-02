@@ -1,0 +1,9 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+Dataset: Compost Maturity Prediction and Gas Emissions Monitoring: A Sensor-Based and Interpretable Machine Learning Approach
+Authors: Hafsa Kibria et al.
+Source: https://github.com/hafsa-kibria/Compost-Dataset
+Commit: fa8eb73d228175948db58f8cd1a7128b129282f6
+
+Licensed under the Creative Commons Attribution 4.0 International License:
+https://creativecommons.org/licenses/by/4.0/
