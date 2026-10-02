@@ -45,3 +45,5 @@ htmlcov/
 Thumbs.db
 .vscode/
 .idea/
+usb_backup/*.PDF
+usb_backup/*.HTM
