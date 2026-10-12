@@ -76,24 +76,33 @@ def _ensure_app_imported():  # type: ignore[no-untyped-def]
     if "app" in sys.modules:
         return sys.modules["app"]
     sys.modules["streamlit"] = _make_fake_streamlit()
-    plotly_mod = types.ModuleType("plotly")
-    go_mod = types.ModuleType("plotly.graph_objects")
+    try:
+        import plotly.graph_objects  # noqa: F401
+    except ImportError:
+        plotly_mod = types.ModuleType("plotly")
+        go_mod = types.ModuleType("plotly.graph_objects")
 
-    class _Fig:
-        def __init__(self, *a: object, **k: object) -> None:
-            pass
+        class _Fig:
+            def __init__(self, *a: object, **k: object) -> None:
+                pass
 
-        def update_layout(self, *a: object, **k: object) -> None:
-            pass
+            def update_layout(self, *a: object, **k: object) -> None:
+                pass
 
-    class _Bar:
-        def __init__(self, *a: object, **k: object) -> None:
-            pass
+            def add_trace(self, *a: object, **k: object) -> None:
+                pass
 
-    go_mod.Figure = _Fig  # type: ignore[attr-defined]
-    go_mod.Bar = _Bar  # type: ignore[attr-defined]
-    sys.modules["plotly"] = plotly_mod
-    sys.modules["plotly.graph_objects"] = go_mod
+            def add_hline(self, *a: object, **k: object) -> None:
+                pass
+
+        class _Bar:
+            def __init__(self, *a: object, **k: object) -> None:
+                pass
+
+        go_mod.Figure = _Fig  # type: ignore[attr-defined]
+        go_mod.Bar = _Bar  # type: ignore[attr-defined]
+        sys.modules["plotly"] = plotly_mod
+        sys.modules["plotly.graph_objects"] = go_mod
     import importlib.util
 
     app_path = Path(__file__).resolve().parent.parent / "app.py"
