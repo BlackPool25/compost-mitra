@@ -1,14 +1,74 @@
+# CompostMitra compose — offline classroom deployment.
+# Image budget: <800MB (multi-stage venv build; check: docker images compostmitra:s1).
+# Startup budget: <30s cold start (HEALTHCHECK start-period 30s covers model load).
+# Base images pinned in Dockerfile (python:3.11-slim-bookworm, no latest);
+# service images below are pinned tags, never latest.
+# Reproducibility: PYTHONHASHSEED=42 + SEED=42 on every service.
+# Usage:
+#   docker compose up app                  # default profile (Streamlit :8501)
+#   docker compose --profile gates up --abort-on-container-exit   # M1 gates
+#   docker compose --profile offline up    # zero-network classroom run
+
 services:
   app:
     build: .
     image: compostmitra:s1
     ports:
       - "8501:8501"
+    environment:
+      - PYTHONHASHSEED=42
+      - SEED=42
+    mem_limit: 2g
+    cpus: 2.0
     restart: unless-stopped
 
-  datacheck-gate:
+  datacheck:
+    image: compostmitra:s1
+    profiles: ["gates"]
+    environment:
+      - PYTHONHASHSEED=42
+      - SEED=42
+    mem_limit: 2g
+    cpus: 2.0
+    depends_on:
+      app:
+        condition: service_healthy
+    command: ["python", "scripts/datacheck.py", "--strict", "data/clean/hafsa_452.csv", "data/clean/mullick_1314.csv", "data/clean/zhang_848.csv", "data/ingredients.csv", "data/plants.csv"]
+
+  pytest:
+    image: compostmitra:s1
+    profiles: ["gates"]
+    environment:
+      - PYTHONHASHSEED=42
+      - SEED=42
+    mem_limit: 2g
+    cpus: 2.0
+    depends_on:
+      app:
+        condition: service_healthy
+    command: ["python", "-m", "pytest", "tests/", "-q"]
+
+  sweep:
+    image: compostmitra:s1
+    profiles: ["gates"]
+    environment:
+      - PYTHONHASHSEED=42
+      - SEED=42
+    mem_limit: 2g
+    cpus: 2.0
+    depends_on:
+      app:
+        condition: service_healthy
+    command: ["sh", "-c", "mkdir -p reports && python scripts/sweep_test.py"]
+
+  app-offline:
     build: .
     image: compostmitra:s1
-    depends_on:
-      - app
-    command: ["python", "scripts/datacheck.py", "--strict"]
+    profiles: ["offline"]
+    network_mode: "none"
+    environment:
+      - PYTHONHASHSEED=42
+      - SEED=42
+    mem_limit: 2g
+    cpus: 2.0
+    command: ["python", "scripts/datacheck.py", "--strict", "data/clean/hafsa_452.csv", "data/clean/mullick_1314.csv", "data/clean/zhang_848.csv", "data/ingredients.csv", "data/plants.csv"]

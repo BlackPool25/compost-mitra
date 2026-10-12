@@ -45,6 +45,7 @@ DEMO_CATALOG["garden_waste"] = {
     "moist_pct": 50.0,
     "dph": 0.0,
     "source": "Literature",
+    "basis": "dry",
 }
 
 

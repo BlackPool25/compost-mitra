@@ -126,6 +126,28 @@ _log "Checking Docker..."
 if command -v docker &> /dev/null && docker info &> /dev/null; then
   if docker build -t compostmitra:s1 . > /tmp/m1_docker_build.log 2>&1; then
     _pass "Docker build compostmitra:s1"
+    # Image budget <800MB
+    SIZE_RAW=$(docker images compostmitra:s1 --format '{{.Size}}' | head -n1)
+    SIZE_MB=$(echo "$SIZE_RAW" | awk '{if ($1 ~ /GB/) {v=$1; sub(/GB/,"",v); print v*1024} else {v=$1; sub(/MB/,"",v); print v}}')
+    if awk "BEGIN {exit !($SIZE_MB < 800)}"; then
+      _pass "Docker image size <800MB (got $SIZE_RAW)"
+    else
+      _fail "Docker image over budget (got $SIZE_RAW, want <800MB)"
+    fi
+    # Startup budget <30s: boot container, poll health endpoint
+    docker rm -f m1_startup_probe > /dev/null 2>&1 || true
+    docker run -d --name m1_startup_probe -p 8502:8501 compostmitra:s1 > /dev/null 2>&1
+    START_OK=0
+    for i in $(seq 1 30); do
+      if curl -sf http://localhost:8502/_stcore/health > /dev/null 2>&1; then START_OK=1; break; fi
+      sleep 1
+    done
+    docker rm -f m1_startup_probe > /dev/null 2>&1 || true
+    if [ "$START_OK" -eq 1 ]; then
+      _pass "Docker startup <30s (healthy after ${i}s)"
+    else
+      _fail "Docker startup over 30s budget"
+    fi
     if docker run --rm compostmitra:s1 python3 scripts/datacheck.py --strict data/clean/hafsa_452.csv data/clean/mullick_1314.csv data/clean/zhang_848.csv data/ingredients.csv data/plants.csv 2>&1 | grep -q "0 rejected"; then
       _pass "Docker in-container datacheck"
     else

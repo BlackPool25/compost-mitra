@@ -1,0 +1,100 @@
+{
+  "n_fail": 0,
+  "n_pass": 0,
+  "n_runs": 1,
+  "n_warn": 1,
+  "pass_or_warn_rate": 1.0,
+  "runs": [
+    {
+      "crop": "tomato",
+      "fail_reasons": [],
+      "guardrail_hits": {
+        "citrus": false,
+        "meat": false,
+        "p_cap": false
+      },
+      "pool": "balanced_greens_browns",
+      "quantity": "med_3_5_kg",
+      "status": "WARN",
+      "top3": [
+        {
+          "benefits": {
+            "co2e": 6.3,
+            "kg_mo": 14.0,
+            "rs_mo": 315.0
+          },
+          "cn": 26.95,
+          "heuristic_grade": "GRADE_A",
+          "k": 0.82,
+          "loo_top_delta": 1.4142,
+          "loo_top_id": "coffee_grounds",
+          "match_score": 0.0,
+          "match_score_raw": -2.0262,
+          "moist_pct": 71.51,
+          "n": 1.56,
+          "p": 0.3,
+          "ph": 6.93,
+          "weights": {
+            "coffee_grounds": 0.2971,
+            "straw": 0.1006,
+            "vegetable_scraps": 0.6023
+          }
+        },
+        {
+          "benefits": {
+            "co2e": 6.3,
+            "kg_mo": 14.0,
+            "rs_mo": 315.0
+          },
+          "cn": 26.63,
+          "heuristic_grade": "GRADE_A",
+          "k": 0.81,
+          "loo_top_delta": 2.1577,
+          "loo_top_id": "coffee_grounds",
+          "match_score": 0.0,
+          "match_score_raw": -2.0378,
+          "moist_pct": 69.28,
+          "n": 1.58,
+          "p": 0.3,
+          "ph": 6.93,
+          "weights": {
+            "coffee_grounds": 0.3976,
+            "straw": 0.1036,
+            "vegetable_scraps": 0.4988
+          }
+        },
+        {
+          "benefits": {
+            "co2e": 6.3,
+            "kg_mo": 14.0,
+            "rs_mo": 315.0
+          },
+          "cn": 24.94,
+          "heuristic_grade": "GRADE_B",
+          "k": 0.77,
+          "loo_top_delta": 7.6819,
+          "loo_top_id": "coffee_grounds",
+          "match_score": 0.0,
+          "match_score_raw": -2.047,
+          "moist_pct": 61.58,
+          "n": 1.68,
+          "p": 0.31,
+          "ph": 6.91,
+          "weights": {
+            "coffee_grounds": 0.7999,
+            "straw": 0.099,
+            "vegetable_scraps": 0.1011
+          }
+        }
+      ],
+      "total_waste_kg": 3.5,
+      "warnings": [
+        "score_tie_display_only_raw_resolved",
+        "moist_outside_start_band_71.51",
+        "moist_outside_start_band_69.28",
+        "moist_outside_start_band_61.58"
+      ]
+    }
+  ],
+  "seed": 42
+}

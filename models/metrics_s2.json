@@ -1,0 +1,526 @@
+{
+  "dataset": "data/clean/hafsa_452.csv",
+  "target_definition": "mature = 1 if gi >= 80.0 else 0 (biological germination index maturity)",
+  "n_rows": 452,
+  "n_batches": 46,
+  "n_mature": 188,
+  "prevalence_baseline": 0.4159,
+  "chance_balanced_acc": 0.5,
+  "cv_protocol": "LeaveOneGroupOut (LOGO) across all 46 batches",
+  "bootstrap_protocol": "Cluster-bootstrap over 46 batches (B=1000)",
+  "gates": {
+    "balanced_accuracy_gate": 0.7,
+    "pr_auc_gate": 0.5
+  },
+  "excluded_from_operational": [
+    "gi",
+    "score",
+    "t_value",
+    "cn",
+    "tn",
+    "toc"
+  ],
+  "tier_footnote": "T1 REAL | LIT calc | D1 proxy",
+  "feature_sets": {
+    "sensor": {
+      "features": [
+        "day",
+        "temp",
+        "moist_pct",
+        "ph"
+      ],
+      "models": {
+        "dummy": {
+          "accuracy": 0.5841,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "pr_auc": 0.4159,
+          "roc_auc": 0.5,
+          "confusion_matrix_tn_fp_fn_tp": {
+            "tn": 264,
+            "fp": 0,
+            "fn": 188,
+            "tp": 0
+          },
+          "cluster_bootstrap_95ci": {
+            "balanced_accuracy_95ci": [
+              0.5,
+              0.5
+            ],
+            "pr_auc_95ci": [
+              0.3371,
+              0.508
+            ],
+            "accuracy_95ci": [
+              0.492,
+              0.6629
+            ],
+            "roc_auc_95ci": [
+              0.5,
+              0.5
+            ],
+            "f1_95ci": [
+              0.0,
+              0.0
+            ]
+          },
+          "gate_balanced_acc_ge_70": false,
+          "gate_pr_auc_ge_50": false
+        },
+        "logreg": {
+          "accuracy": 0.8252,
+          "balanced_accuracy": 0.8289,
+          "f1": 0.802,
+          "pr_auc": 0.8547,
+          "roc_auc": 0.8947,
+          "confusion_matrix_tn_fp_fn_tp": {
+            "tn": 213,
+            "fp": 51,
+            "fn": 28,
+            "tp": 160
+          },
+          "cluster_bootstrap_95ci": {
+            "balanced_accuracy_95ci": [
+              0.7918,
+              0.8666
+            ],
+            "pr_auc_95ci": [
+              0.7888,
+              0.9235
+            ],
+            "accuracy_95ci": [
+              0.7854,
+              0.8625
+            ],
+            "roc_auc_95ci": [
+              0.8492,
+              0.9336
+            ],
+            "f1_95ci": [
+              0.7411,
+              0.8605
+            ]
+          },
+          "gate_balanced_acc_ge_70": true,
+          "gate_pr_auc_ge_50": true
+        },
+        "rf": {
+          "accuracy": 0.8429,
+          "balanced_accuracy": 0.8472,
+          "f1": 0.8221,
+          "pr_auc": 0.8826,
+          "roc_auc": 0.9322,
+          "confusion_matrix_tn_fp_fn_tp": {
+            "tn": 217,
+            "fp": 47,
+            "fn": 24,
+            "tp": 164
+          },
+          "cluster_bootstrap_95ci": {
+            "balanced_accuracy_95ci": [
+              0.8115,
+              0.8888
+            ],
+            "pr_auc_95ci": [
+              0.8086,
+              0.9465
+            ],
+            "accuracy_95ci": [
+              0.8044,
+              0.8857
+            ],
+            "roc_auc_95ci": [
+              0.9084,
+              0.9547
+            ],
+            "f1_95ci": [
+              0.7475,
+              0.8895
+            ]
+          },
+          "gate_balanced_acc_ge_70": true,
+          "gate_pr_auc_ge_50": true
+        },
+        "xgb": {
+          "accuracy": 0.854,
+          "balanced_accuracy": 0.8497,
+          "f1": 0.8245,
+          "pr_auc": 0.8645,
+          "roc_auc": 0.9295,
+          "confusion_matrix_tn_fp_fn_tp": {
+            "tn": 231,
+            "fp": 33,
+            "fn": 33,
+            "tp": 155
+          },
+          "cluster_bootstrap_95ci": {
+            "balanced_accuracy_95ci": [
+              0.8126,
+              0.8913
+            ],
+            "pr_auc_95ci": [
+              0.7789,
+              0.9441
+            ],
+            "accuracy_95ci": [
+              0.8242,
+              0.8915
+            ],
+            "roc_auc_95ci": [
+              0.9081,
+              0.9528
+            ],
+            "f1_95ci": [
+              0.7545,
+              0.8906
+            ]
+          },
+          "gate_balanced_acc_ge_70": true,
+          "gate_pr_auc_ge_50": true
+        },
+        "ridge_gi": {
+          "target": "gi",
+          "logo_rmse": 23.1032,
+          "logo_mae": 17.1292
+        }
+      }
+    },
+    "lab": {
+      "features": [
+        "day",
+        "temp",
+        "moist_pct",
+        "ph",
+        "nh3",
+        "no3",
+        "ec",
+        "om"
+      ],
+      "models": {
+        "dummy": {
+          "accuracy": 0.5841,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "pr_auc": 0.4159,
+          "roc_auc": 0.5,
+          "confusion_matrix_tn_fp_fn_tp": {
+            "tn": 264,
+            "fp": 0,
+            "fn": 188,
+            "tp": 0
+          },
+          "cluster_bootstrap_95ci": {
+            "balanced_accuracy_95ci": [
+              0.5,
+              0.5
+            ],
+            "pr_auc_95ci": [
+              0.3371,
+              0.508
+            ],
+            "accuracy_95ci": [
+              0.492,
+              0.6629
+            ],
+            "roc_auc_95ci": [
+              0.5,
+              0.5
+            ],
+            "f1_95ci": [
+              0.0,
+              0.0
+            ]
+          },
+          "gate_balanced_acc_ge_70": false,
+          "gate_pr_auc_ge_50": false
+        },
+        "logreg": {
+          "accuracy": 0.8341,
+          "balanced_accuracy": 0.8342,
+          "f1": 0.8072,
+          "pr_auc": 0.8538,
+          "roc_auc": 0.882,
+          "confusion_matrix_tn_fp_fn_tp": {
+            "tn": 220,
+            "fp": 44,
+            "fn": 31,
+            "tp": 157
+          },
+          "cluster_bootstrap_95ci": {
+            "balanced_accuracy_95ci": [
+              0.7981,
+              0.8699
+            ],
+            "pr_auc_95ci": [
+              0.7823,
+              0.9216
+            ],
+            "accuracy_95ci": [
+              0.798,
+              0.8705
+            ],
+            "roc_auc_95ci": [
+              0.8373,
+              0.929
+            ],
+            "f1_95ci": [
+              0.7434,
+              0.8683
+            ]
+          },
+          "gate_balanced_acc_ge_70": true,
+          "gate_pr_auc_ge_50": true
+        },
+        "rf": {
+          "accuracy": 0.865,
+          "balanced_accuracy": 0.873,
+          "f1": 0.8501,
+          "pr_auc": 0.9155,
+          "roc_auc": 0.9431,
+          "confusion_matrix_tn_fp_fn_tp": {
+            "tn": 218,
+            "fp": 46,
+            "fn": 15,
+            "tp": 173
+          },
+          "cluster_bootstrap_95ci": {
+            "balanced_accuracy_95ci": [
+              0.8453,
+              0.9102
+            ],
+            "pr_auc_95ci": [
+              0.8572,
+              0.9644
+            ],
+            "accuracy_95ci": [
+              0.8231,
+              0.9088
+            ],
+            "roc_auc_95ci": [
+              0.9255,
+              0.9668
+            ],
+            "f1_95ci": [
+              0.7838,
+              0.9086
+            ]
+          },
+          "gate_balanced_acc_ge_70": true,
+          "gate_pr_auc_ge_50": true
+        },
+        "xgb": {
+          "accuracy": 0.8628,
+          "balanced_accuracy": 0.8627,
+          "f1": 0.8394,
+          "pr_auc": 0.8987,
+          "roc_auc": 0.9402,
+          "confusion_matrix_tn_fp_fn_tp": {
+            "tn": 228,
+            "fp": 36,
+            "fn": 26,
+            "tp": 162
+          },
+          "cluster_bootstrap_95ci": {
+            "balanced_accuracy_95ci": [
+              0.8296,
+              0.9035
+            ],
+            "pr_auc_95ci": [
+              0.8179,
+              0.9661
+            ],
+            "accuracy_95ci": [
+              0.8325,
+              0.9034
+            ],
+            "roc_auc_95ci": [
+              0.9188,
+              0.9695
+            ],
+            "f1_95ci": [
+              0.7846,
+              0.8987
+            ]
+          },
+          "gate_balanced_acc_ge_70": true,
+          "gate_pr_auc_ge_50": true
+        },
+        "ridge_gi": {
+          "target": "gi",
+          "logo_rmse": 22.3362,
+          "logo_mae": 16.9427
+        }
+      }
+    },
+    "leakage_ref": {
+      "features": [
+        "day",
+        "temp",
+        "moist_pct",
+        "ph",
+        "cn",
+        "nh3",
+        "no3",
+        "tn",
+        "toc",
+        "ec",
+        "om"
+      ],
+      "models": {
+        "dummy": {
+          "accuracy": 0.5841,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "pr_auc": 0.4159,
+          "roc_auc": 0.5,
+          "confusion_matrix_tn_fp_fn_tp": {
+            "tn": 264,
+            "fp": 0,
+            "fn": 188,
+            "tp": 0
+          },
+          "cluster_bootstrap_95ci": {
+            "balanced_accuracy_95ci": [
+              0.5,
+              0.5
+            ],
+            "pr_auc_95ci": [
+              0.3371,
+              0.508
+            ],
+            "accuracy_95ci": [
+              0.492,
+              0.6629
+            ],
+            "roc_auc_95ci": [
+              0.5,
+              0.5
+            ],
+            "f1_95ci": [
+              0.0,
+              0.0
+            ]
+          },
+          "gate_balanced_acc_ge_70": false,
+          "gate_pr_auc_ge_50": false
+        },
+        "logreg": {
+          "accuracy": 0.8319,
+          "balanced_accuracy": 0.8369,
+          "f1": 0.8109,
+          "pr_auc": 0.8835,
+          "roc_auc": 0.9019,
+          "confusion_matrix_tn_fp_fn_tp": {
+            "tn": 213,
+            "fp": 51,
+            "fn": 25,
+            "tp": 163
+          },
+          "cluster_bootstrap_95ci": {
+            "balanced_accuracy_95ci": [
+              0.8008,
+              0.8719
+            ],
+            "pr_auc_95ci": [
+              0.8415,
+              0.9339
+            ],
+            "accuracy_95ci": [
+              0.7972,
+              0.8654
+            ],
+            "roc_auc_95ci": [
+              0.8601,
+              0.9454
+            ],
+            "f1_95ci": [
+              0.7647,
+              0.8631
+            ]
+          },
+          "gate_balanced_acc_ge_70": true,
+          "gate_pr_auc_ge_50": true
+        },
+        "rf": {
+          "accuracy": 0.8872,
+          "balanced_accuracy": 0.8912,
+          "f1": 0.8709,
+          "pr_auc": 0.9284,
+          "roc_auc": 0.9521,
+          "confusion_matrix_tn_fp_fn_tp": {
+            "tn": 229,
+            "fp": 35,
+            "fn": 16,
+            "tp": 172
+          },
+          "cluster_bootstrap_95ci": {
+            "balanced_accuracy_95ci": [
+              0.8662,
+              0.9221
+            ],
+            "pr_auc_95ci": [
+              0.8609,
+              0.9749
+            ],
+            "accuracy_95ci": [
+              0.8626,
+              0.9205
+            ],
+            "roc_auc_95ci": [
+              0.9325,
+              0.9752
+            ],
+            "f1_95ci": [
+              0.8274,
+              0.9189
+            ]
+          },
+          "gate_balanced_acc_ge_70": true,
+          "gate_pr_auc_ge_50": true
+        },
+        "xgb": {
+          "accuracy": 0.8827,
+          "balanced_accuracy": 0.8812,
+          "f1": 0.8609,
+          "pr_auc": 0.9238,
+          "roc_auc": 0.9532,
+          "confusion_matrix_tn_fp_fn_tp": {
+            "tn": 235,
+            "fp": 29,
+            "fn": 24,
+            "tp": 164
+          },
+          "cluster_bootstrap_95ci": {
+            "balanced_accuracy_95ci": [
+              0.8522,
+              0.9214
+            ],
+            "pr_auc_95ci": [
+              0.869,
+              0.9764
+            ],
+            "accuracy_95ci": [
+              0.8567,
+              0.9215
+            ],
+            "roc_auc_95ci": [
+              0.9339,
+              0.9788
+            ],
+            "f1_95ci": [
+              0.8082,
+              0.9174
+            ]
+          },
+          "gate_balanced_acc_ge_70": true,
+          "gate_pr_auc_ge_50": true
+        },
+        "ridge_gi": {
+          "target": "gi",
+          "logo_rmse": 20.6757,
+          "logo_mae": 14.8773
+        }
+      }
+    }
+  }
+}

@@ -15,6 +15,8 @@ This document records the architectural and engineering decisions governing **Co
 | **ADR-009** | Reversal of Docker-Deleted Clause for Reproducible CI | Accepted | DevOps & Build, automated headless testing and SBOM generation |
 | **ADR-010** | Public-Proxy Holdouts in Place of Physical Canteen Survey | Accepted | Validation Strategy, transparent cross-dataset generalization drop |
 | **ADR-011** | XGBoost and SHAP Interpretability Parked to Sprint 2 | Accepted | ML Modeling, S1 uses mock payloads and pure-calculator sensitivity |
+| **ADR-012** | Mullick-Real Exclusion from Transfer Claims (Hafsa Duplication) | Accepted | Validation Strategy, 452/452 duplication voids Mullick-real holdout |
+| **ADR-013** | Simplex-Lattice Optimizer with Dirichlet Refinement | Accepted | Optimizer, frozen {10,10} lattice + Dirichlet refine, deterministic top-k |
 
 ---
 
@@ -103,6 +105,22 @@ This document records the architectural and engineering decisions governing **Co
 - **Context:** Introducing gradient boosting frameworks (XGBoost, CatBoost) and SHAP TreeExplainer computations during S1 adds heavy dependency overhead before basic data contracts and UI shells are stabilized.
 - **Decision:** Park all XGBoost training and SHAP calculations to Sprint 2. In Sprint 1, UI shell explainability is demonstrated using mock response fixtures, and scrap sensitivity is computed deterministically via Leave-One-Out blender math.
 - **Consequences:** Enforces a clean separation between foundational data contracts and advanced machine learning modeling.
+
+---
+
+## ADR-012: Mullick-Real Exclusion from Transfer Claims (Hafsa Duplication)
+- **Status:** Accepted
+- **Context:** `data/clean/hafsa_452.csv` (452 real observations) and the `Synthetic == 0` subset of `data/clean/mullick_1314.csv` (452 rows) are duplicated 452/452 on all mapped contract keys (`cn`, `ph`, `moist_pct`, `temp`, `day`, `nh3`, `no3`, `tn`, `toc`, `ec`, `om`) plus `source` and `batch_key` (46 identical), per `DATA_CONTRACT_v3.1.md` §2 and §5.
+- **Decision:** Exclude the Mullick-real (`Synthetic == 0`) subset from all cross-dataset transfer claims; transfer evaluation uses Hafsa-real → Zhang (`zhang_848.csv`) only (observed gap, sanity check, not proof). Retain synthetic rows in `mullick_1314.csv` strictly for the Sprint 2 ablation (real-only vs synthetic-augmented) with zero S1 leakage, per ADR-005.
+- **Consequences:** Voids the Hafsa-real → Mullick-real holdout pair while leaving the Zhang proxy holdout (ADR-010) and S2 ablation intact. See `docs/adrs/ADR-012-mullick-exclusion.md`.
+
+---
+
+## ADR-013: Simplex-Lattice Optimizer with Dirichlet Refinement
+- **Status:** Accepted
+- **Context:** `optimize(needs, waste, k=3)` per `DATA_CONTRACT_v3.1.md` §4 must return bounded, deterministic, offline top-k recipes over weights with Σw = 1 ± 1e-6 and `lower_snake` keys, backed by the `P_cap` rule from `data/plants.csv`.
+- **Decision:** Lock the optimizer to a simplex-lattice {10, 10} grid (92378 candidates): score all points, retain the top 10pct (coarse), then run a 1pct Dirichlet perturbation refine concentrated around the top-3 coarse recipes. Zero weights allowed. Final = suitability + maturity-penalties with lambdaP = 0.35 and lambdaPH = 0.20; seed 42 per `DATA_CONTRACT_v3.1.md` §1.
+- **Consequences:** Freezes search space, seed, weights, and penalty coefficients for auditability within the offline <3s budget; any change requires a contract version bump plus full rerun. See `docs/adrs/ADR-013-optimizer-lattice.md`.
 
 ---
 
