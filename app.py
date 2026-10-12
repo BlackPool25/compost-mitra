@@ -11,7 +11,22 @@ from pathlib import Path
 from typing import Any
 
 import plotly.graph_objects as go
-import streamlit as st
+try:
+    import streamlit as st
+except ImportError:
+    import types
+    st = types.ModuleType("streamlit")
+    st.set_page_config = lambda *a, **k: None
+    st.markdown = lambda *a, **k: None
+    st.caption = lambda *a, **k: None
+    st.columns = lambda spec=2, *a, **k: [types.SimpleNamespace(__enter__=lambda s: s, __exit__=lambda *x: False) for _ in range(int(spec) if isinstance(spec, int) else len(spec))]
+    st.radio = lambda *a, **k: 1
+    st.multiselect = lambda *a, **k: []
+    st.slider = lambda *a, **k: 5
+    st.number_input = lambda *a, **k: 0.0
+    st.button = lambda *a, **k: False
+    st.expander = lambda *a, **k: types.SimpleNamespace(__enter__=lambda s: s, __exit__=lambda *x: False)
+
 
 from tokens import (
     COLOR_ACCENT,

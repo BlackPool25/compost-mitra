@@ -1,0 +1,15 @@
+<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="50" cy="50" r="48" fill="#FBF5EA" stroke="#EADFCB" stroke-width="2"/>
+  <!-- Rim -->
+  <ellipse cx="50" cy="24" rx="20" ry="6" fill="#9A4A32" />
+  <ellipse cx="50" cy="22" rx="18" ry="5" fill="#E2725B" />
+  <!-- Body -->
+  <path d="M32 24 C32 30, 22 45, 20 62 C18 80, 32 90, 50 90 C68 90, 82 80, 80 62 C78 45, 68 30, 68 24 Z" fill="#B5523B" />
+  <!-- Green Sprout -->
+  <path d="M50 20 C48 10, 38 8, 36 12 C34 16, 44 18, 50 20 Z" fill="#3F6B3A" />
+  <path d="M50 20 C52 10, 62 8, 64 12 C66 16, 56 18, 50 20 Z" fill="#52834C" />
+  <!-- Warli Dots -->
+  <circle cx="38" cy="54" r="2" fill="#FFFDF8" />
+  <circle cx="50" cy="52" r="2" fill="#FFFDF8" />
+  <circle cx="62" cy="54" r="2" fill="#FFFDF8" />
+</svg>

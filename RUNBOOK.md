@@ -22,7 +22,7 @@ source .venv/bin/activate
 pip install --no-index --find-links=wheels/ -r requirements.txt || pip install -r requirements.txt
 
 # Launch application
-streamlit run app.py --server.headless true --server.port 8501
+python server.py
 ```
 
 ### 1.2 Windows Setup (PowerShell / Command Prompt)
@@ -39,7 +39,7 @@ py -3.11 -m venv .venv
 pip install --no-index --find-links=wheels\ -r requirements.txt || pip install -r requirements.txt
 
 # Launch application
-streamlit run app.py
+python server.py
 ```
 
 ### 1.3 Docker Offline Deployment
@@ -48,17 +48,17 @@ CompostMitra can be packaged into an isolated OCI image with an image budget und
 
 ```bash
 # Build the production container image
-docker build -t compostmitra:s1 .
+docker build -t compostmitra:v2 .
 
 # Run container with strict zero-network isolation (--network none)
 docker run -d \
   --name compostmitra-offline \
   --network none \
-  -p 8501:8501 \
-  compostmitra:s1
+  -p 3000:3000 \
+  compostmitra:v2
 
 # Verify container health check
-curl -sf http://localhost:8501/_stcore/health
+curl -sf http://localhost:3000/api/health
 ```
 
 ---
@@ -120,10 +120,10 @@ fi
 
 ## 4. Emergency Troubleshooting & Fallback Procedures
 
-1. **Port 8501 Already in Use:**
+1. **Port 3000 Already in Use:**
    ```bash
-   # Terminate existing Streamlit processes
-   pkill -f "streamlit run" || kill $(lsof -t -i:8501)
+   # Terminate existing server processes
+   pkill -f "server.py" || kill $(lsof -t -i:3000)
    ```
 2. **Key-Casing Assertion Failure:**
    Run `python scripts/check_keys.py mock/recipe_response.json mock/predict_response.json` to pinpoint uppercase or camelCase keys.

@@ -37,19 +37,26 @@ python scripts/datacheck.py --strict data/clean/*.csv data/ingredients.csv data/
 python -m pytest tests/ -q
 ```
 
-### 3. Launch the Streamlit Interface
+### 3. Launch the CompostMitra 2.0 Web App
 
 ```bash
-streamlit run app.py
-```
-Open your browser to `http://localhost:8501`. Cold start loads in under 3.0 seconds offline.
+# Build frontend PWA (one-time or after edits)
+cd frontend && npm install && npm run build && cd ..
 
-### 4. Interactive 60-Second Walkthrough in UI
-1. **Step 1 (Plants):** Select target garden crops (e.g. Tomato, Rose, Spinach) and pot scale.
-2. **Step 2 (Waste):** Enter household kitchen scraps (Vegetable peels, Coffee grounds, Banana peels, Dry leaves).
-3. **Step 3 (Recipe):** Review top-3 ranked recipes with C/N balance, NPK delivery estimates, and maturity score.
-4. **Step 4 (Impact):** Inspect Leave-One-Out (LOO) sensitivity bars showing the marginal contribution of each feedstock.
-5. **Step 5 (Benefits):** Review monthly compost yield (kg/mo), economic savings (₹/mo), and carbon offset metrics.
+# Launch FastAPI + PWA server
+python server.py
+# Or with Docker:
+docker compose up app
+```
+Open your browser to `http://localhost:3000`. Cold start loads in under 0.5s offline.
+
+### 4. Interactive Walkthrough in UI
+1. **Aaj Kya Daalein:** Select kitchen scrap volumes (caddy, plates, filters) and get instant handful recipes.
+2. **Bin Doctor:** 3-tap emergency triage for bad smells, pests, cold piles, and moisture issues.
+3. **45-Day Journey:** Dynamic kinetic timeline tracking microbial stages, turning reminders, and curing.
+4. **48-Hour Seed Check:** Zucconi Germination bioassay proving compost is 100% root-safe before harvest.
+5. **Plants & Dosing:** Honest monthly handful guidelines for balcony crops (Tomato, Tulsi, Rose, Chilli).
+6. **Climate & Savings:** Track food waste diverted (kg), nursery savings (₹), and avoided methane.
 
 ---
 

@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Surface & Base */
+    --bg: #FBF5EA;          /* cream */
+    --surface: #FFFDF8;     /* paper */
+    --sand: #EADFCB;        /* sand borders & dividers */
+    --ink: #3A2218;         /* primary text */
+    --text: #3A2218;
+    --ink-muted: #6B5448;   /* secondary text */
+    --text-muted: #6B5448;
+
+    /* Brand Clay & Terracotta */
+    --accent: #B5523B;          /* clay-600: primary button fill, brand */
+    --accent-pressed: #9A4A32;  /* clay-700: pressed state */
+    --on-accent: #FFFFFF;
+    --clay-decor: #E2725B;      /* clay-500: decorative illustration only! */
+    --hero: #4A2A1E;            /* clay-900: deep hero panels */
+    --on-hero: #FBF5EA;
+
+    /* Status Tokens */
+    --ok: #3F6B3A;              /* neem-700: healthy */
+    --ok-bg: #E3EFD8;           /* neem-100: healthy tint */
+    --caution: #E0A92E;         /* haldi-500: caution */
+    --caution-bg: #F8E7B8;      /* haldi-100: caution tint */
+    --caution-text: #6B4E0A;    /* haldi-text */
+    --wet: #7A5236;             /* mitti-600: too wet */
+    --act: #B3362F;             /* kumkum-600: act now */
+
+    /* Radii & Motion */
+    --radius-card: 12px;
+    --radius-sheet: 20px;
+    --dur-micro: 120ms;
+    --dur-std: 240ms;
+    --dur-emph: 400ms;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans Devanagari", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100dvh;
+    overflow-x: hidden;
+  }
+
+  /* Focus ring compliance WCAG 2.2 */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+/* Custom Matka pot clip and organic border styles */
+.border-sand {
+  border-color: var(--sand);
+}
+
+.bg-paper {
+  background-color: var(--surface);
+}
+
+.bg-cream {
+  background-color: var(--bg);
+}
+
+.text-ink {
+  color: var(--text);
+}
+
+.text-ink-muted {
+  color: var(--text-muted);
+}

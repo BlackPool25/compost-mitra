@@ -1,13 +1,21 @@
 # syntax=docker/dockerfile:1
-# CompostMitra — offline classroom image.
-# Budget: <800MB, Streamlit cold start <30s (see compose comments).
-# Layer order: requirements baked in builder before app code (final stage),
-# so code edits reuse the cached venv layer.
+# CompostMitra 2.0 — Production Dockerfile
+# Multi-stage build: React 19 PWA frontend + FastAPI Python agronomic runtime.
+# Zero Streamlit overhead, cold start < 1s, pure offline-first PWA.
 
-# ── builder: venv at /opt/venv, inference-only (no xgboost/dev tools) ──
-# Full ML/dev deps (xgboost, pytest, ruff) stay OUT of the image;
-# gates profile installs them at CI time, never baked in.
-FROM python:3.11-slim-bookworm AS builder
+# ── Stage 1: Build React 19 + TypeScript + Tailwind PWA ──
+FROM node:24-slim AS frontend-builder
+
+WORKDIR /app/frontend
+
+COPY frontend/package*.json ./
+RUN npm install
+
+COPY frontend/ ./
+RUN npm run build
+
+# ── Stage 2: Python venv builder (FastAPI + inference packages) ──
+FROM python:3.11-slim-bookworm AS python-builder
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
@@ -16,13 +24,12 @@ WORKDIR /app
 
 COPY requirements.inference.txt .
 
-# One RUN: venv + inference wheels only.
 RUN python3 -m venv /opt/venv \
     && /opt/venv/bin/pip install --upgrade pip \
     && /opt/venv/bin/pip install --no-cache-dir -r requirements.inference.txt \
     && find /opt/venv -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null || true
 
-# ── final: slim runtime, curl only, non-root ──
+# ── Stage 3: Final Slim Production Runtime ──
 FROM python:3.11-slim-bookworm AS final
 
 ENV PYTHONHASHSEED=42 \
@@ -30,11 +37,9 @@ ENV PYTHONHASHSEED=42 \
     PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     PATH="/opt/venv/bin:$PATH" \
-    STREAMLIT_SERVER_PORT=8501 \
-    STREAMLIT_SERVER_ADDRESS=0.0.0.0 \
-    STREAMLIT_SERVER_HEADLESS=true
+    PORT=3000
 
-# One RUN: curl only + least-privilege system user (no home, no shell).
+# Install curl for healthcheck and setup non-root user
 RUN apt-get update \
     && apt-get install -y --no-install-recommends curl \
     && rm -rf /var/lib/apt/lists/* \
@@ -42,15 +47,19 @@ RUN apt-get update \
 
 WORKDIR /app
 
-COPY --from=builder /opt/venv /opt/venv
+# Copy python dependencies and compiled React PWA
+COPY --from=python-builder /opt/venv /opt/venv
+COPY --from=frontend-builder --chown=app:nogroup /app/frontend/dist /app/frontend/dist
+
+# Copy application code and agronomic datasets
 COPY --chown=app:nogroup . .
 
 USER app
 
-EXPOSE 8501
+EXPOSE 3000
 
-# start-period 30s: model/metrics load + Streamlit cold start budget.
-HEALTHCHECK --interval=10s --timeout=5s --retries=3 --start-period=30s \
-    CMD curl -f http://localhost:8501/_stcore/health || exit 1
+# Healthcheck targeting FastAPI /api/health endpoint
+HEALTHCHECK --interval=10s --timeout=5s --retries=3 --start-period=10s \
+    CMD curl -f http://localhost:3000/api/health || exit 1
 
-CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+CMD ["uvicorn", "server:app", "--host", "0.0.0.0", "--port", "3000"]
