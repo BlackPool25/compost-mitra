@@ -1,0 +1,92 @@
+{
+  "disclaimer": "Cross-dataset OOD transfer check for context only (proxy sanity, not proof). Zhang et al. represents an external mature-skewed distribution under distinct operational protocols.",
+  "tier_footnote": "T1 REAL | LIT calc | D1 proxy",
+  "sample_sizes": {
+    "n_train_hafsa": 452,
+    "n_test_zhang": 310,
+    "hafsa_positive_prevalence": 0.4159,
+    "zhang_positive_prevalence": 0.7774
+  },
+  "covariate_shift": {
+    "day": {
+      "hafsa_median": 12.0,
+      "zhang_median": 45.0,
+      "note": "Zhang samples strictly mature/late stage (day min=20, median=45 vs Hafsa median=12)."
+    },
+    "moist_pct": {
+      "hafsa_mean": 49.11,
+      "zhang_mean": 63.33,
+      "note": "Zhang composting runs at higher forced aeration moisture (63.3% vs Hafsa 49.1%)."
+    },
+    "gi": {
+      "hafsa_median": 70.08,
+      "zhang_median": 93.12,
+      "median_gap": 23.04
+    }
+  },
+  "regression_ridge_gi": {
+    "rmse": 26.237,
+    "mae": 21.3146,
+    "r2": -0.8301,
+    "shared_keys": [
+      "day",
+      "ph",
+      "cn",
+      "moist_pct"
+    ]
+  },
+  "classification_transfer_gi80": {
+    "shared_sensor": {
+      "logreg": {
+        "accuracy": 0.6258,
+        "balanced_accuracy": 0.4697,
+        "pr_auc": 0.7536,
+        "roc_auc": 0.4251,
+        "confusion_tn_fp_fn_tp": {
+          "tn": 13,
+          "fp": 56,
+          "fn": 60,
+          "tp": 181
+        }
+      },
+      "rf": {
+        "accuracy": 0.6258,
+        "balanced_accuracy": 0.4645,
+        "pr_auc": 0.7982,
+        "roc_auc": 0.4932,
+        "confusion_tn_fp_fn_tp": {
+          "tn": 12,
+          "fp": 57,
+          "fn": 59,
+          "tp": 182
+        }
+      }
+    },
+    "shared_with_cn": {
+      "logreg": {
+        "accuracy": 0.4226,
+        "balanced_accuracy": 0.4321,
+        "pr_auc": 0.7559,
+        "roc_auc": 0.4232,
+        "confusion_tn_fp_fn_tp": {
+          "tn": 31,
+          "fp": 38,
+          "fn": 141,
+          "tp": 100
+        }
+      },
+      "rf": {
+        "accuracy": 0.3903,
+        "balanced_accuracy": 0.4734,
+        "pr_auc": 0.7507,
+        "roc_auc": 0.4436,
+        "confusion_tn_fp_fn_tp": {
+          "tn": 43,
+          "fp": 26,
+          "fn": 163,
+          "tp": 78
+        }
+      }
+    }
+  }
+}
