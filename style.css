@@ -1,193 +1,320 @@
-/* CompostMitra Eco-Premium Stylesheet */
+/* CompostMitra: The Linnaean Herbarium Design System */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
 
-/* Hide Streamlit default chrome */
-#MainMenu {
-  visibility: hidden;
+/* 1. Complete Streamlit Chrome Eradication */
+#MainMenu,
+header[data-testid="stHeader"],
+footer,
+[data-testid="stToolbar"],
+[data-testid="stDecoration"],
+[data-testid="stStatusWidget"],
+.stDeployButton {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
-footer {
-  visibility: hidden;
-}
-
-header {
-  visibility: hidden;
-}
-
-/* Base typography and background */
-html, body, .stApp {
-  background-color: #FFFBEB;
-  color: #1C2D27;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-/* Typography constraints: 16px+ minimum */
-p, span, label, div, input, select, textarea, button {
+/* Base Canvas: French Archival Vellum */
+html, body, [data-testid="stAppViewContainer"], .stApp {
+  background-color: #F6F4EB !important;
+  color: #15221B !important;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
   font-size: 16px !important;
+  line-height: 1.6 !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+.block-container {
+  padding-top: 1.25rem !important;
+  padding-bottom: 3rem !important;
+  max-width: 1380px !important;
+}
+
+/* 2. Editorial Typography */
+h1, h2, h3, .serif-header {
+  font-family: 'Fraunces', Georgia, serif !important;
+  font-feature-settings: "liga" 1, "dlig" 1;
 }
 
 h1 {
-  font-size: 32px !important;
-  color: #2D6A4F !important;
+  font-size: 34px !important;
+  color: #1B4D3E !important;
   font-weight: 700 !important;
-  margin-bottom: 8px !important;
+  letter-spacing: -0.02em !important;
+  margin-bottom: 6px !important;
+  line-height: 1.2 !important;
 }
 
 h2 {
-  font-size: 24px !important;
-  color: #2D6A4F !important;
+  font-size: 26px !important;
+  color: #1B4D3E !important;
   font-weight: 600 !important;
-  margin-top: 16px !important;
+  letter-spacing: -0.015em !important;
+  margin-top: 20px !important;
   margin-bottom: 8px !important;
+  line-height: 1.25 !important;
 }
 
 h3 {
   font-size: 20px !important;
-  color: #1C2D27 !important;
+  color: #15221B !important;
   font-weight: 600 !important;
-  margin-top: 12px !important;
+  margin-top: 14px !important;
   margin-bottom: 6px !important;
 }
 
-/* Eco-premium Cards (16px rounded borders) */
+p, span, label, div {
+  color: #15221B;
+}
+
+/* Monospace Specimen Annotations */
+.specimen-code, .mono-data {
+  font-family: 'Space Mono', 'Courier New', monospace !important;
+  font-size: 14px !important;
+  letter-spacing: -0.02em;
+}
+
+/* 3. Archival Botanical Header Ribbon */
+.botanical-journal-header {
+  border-bottom: 3px double #DED9C8;
+  padding-bottom: 12px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.botanical-vol-tag {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 14px;
+  color: #5A6B60;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+/* 4. Specimen Cards (Pressed Ivory Cardstock) */
 .eco-card, .recipe-card {
-  background-color: #FFFFFF;
-  border: 1px solid #EDF2E7;
-  border-radius: 16px;
-  padding: 24px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 12px rgba(45, 106, 79, 0.05);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  background-color: #FCFAF3 !important;
+  border: 1px solid #DED9C8 !important;
+  border-radius: 14px !important;
+  padding: 24px !important;
+  margin-bottom: 20px !important;
+  box-shadow: 0 2px 10px rgba(21, 34, 27, 0.04) !important;
+  transition: transform 0.18s ease, box-shadow 0.18s ease !important;
+  position: relative;
 }
 
 .eco-card:hover, .recipe-card:hover {
-  box-shadow: 0 8px 24px rgba(45, 106, 79, 0.09);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(21, 34, 27, 0.07) !important;
+  border-color: #C8DDD0 !important;
 }
 
 /* Specific Recipe Card IDs */
 #recipe-card-1, #recipe-card-2, #recipe-card-3 {
-  background-color: #FFFFFF;
-  border: 1px solid #EDF2E7;
-  border-radius: 16px;
-  padding: 24px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 12px rgba(45, 106, 79, 0.06);
+  background-color: #FCFAF3 !important;
+  border: 1px solid #DED9C8 !important;
+  border-radius: 14px !important;
+  padding: 24px !important;
+  margin-bottom: 20px !important;
+  box-shadow: 0 3px 12px rgba(21, 34, 27, 0.05) !important;
 }
 
-/* Grade Badge */
+#recipe-card-1 {
+  border: 1.5px solid #2E6F40 !important;
+  background: linear-gradient(180deg, #FCFAF3 0%, #F5F9F6 100%) !important;
+}
+
+/* 5. Soft Organic Pills with Botanical Leaf Glyphs */
+.organic-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  background-color: #E5EFE7 !important;
+  color: #1B4D3E !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  padding: 4px 14px !important;
+  border-radius: 9999px !important;
+  border: 1px solid #C8DDD0 !important;
+  letter-spacing: 0.02em !important;
+  line-height: 1.4 !important;
+}
+
+.organic-pill-amber {
+  background-color: #FDF6E2 !important;
+  color: #8C5E1E !important;
+  border: 1px solid #EBD5A0 !important;
+}
+
+.organic-pill-sprout {
+  background-color: #EDF7F0 !important;
+  color: #2E6F40 !important;
+  border: 1px solid #BEE0C8 !important;
+}
+
 .grade-badge {
-  display: inline-block;
-  background-color: #D8F3DC;
-  color: #1B4332;
-  font-weight: 700;
-  font-size: 16px;
-  padding: 6px 14px;
-  border-radius: 9999px;
-  border: 1px solid #2D6A4F;
-  letter-spacing: 0.5px;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  background-color: #E5EFE7 !important;
+  color: #1B4D3E !important;
+  font-weight: 700 !important;
+  font-size: 15px !important;
+  padding: 5px 15px !important;
+  border-radius: 9999px !important;
+  border: 1px solid #1B4D3E !important;
+  letter-spacing: 0.04em !important;
 }
 
 #recipe-card-1 .grade-badge {
-  background-color: #2D6A4F;
-  color: #FFFBEB;
-  border: 1px solid #2D6A4F;
+  background-color: #1B4D3E !important;
+  color: #F6F4EB !important;
+  border: 1px solid #1B4D3E !important;
 }
 
-/* Stepper navigation elements */
+/* 6. Integrated Dark Consoles (Midnight Evergreen Slate) */
+.dark-console {
+  background-color: #0E1813 !important;
+  border: 1px solid #1F3327 !important;
+  border-radius: 14px !important;
+  padding: 24px !important;
+  color: #E1EFE6 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+  margin-top: 18px !important;
+  margin-bottom: 24px !important;
+}
+
+.dark-console h3, .dark-console h4 {
+  color: #E1EFE6 !important;
+  font-family: 'Fraunces', Georgia, serif !important;
+}
+
+.dark-console p, .dark-console span {
+  color: #C0D3C7 !important;
+}
+
+.dark-console-mono {
+  font-family: 'Space Mono', monospace !important;
+  color: #4EBA6F !important;
+  font-size: 14px !important;
+}
+
+.dark-console-metric-val {
+  font-family: 'Space Mono', monospace !important;
+  font-size: 26px !important;
+  font-weight: 700 !important;
+  color: #4EBA6F !important;
+}
+
+/* 7. Stepper Navigation Ribbon */
 .stepper-nav {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-bottom: 24px;
+  gap: 8px;
+  margin-bottom: 20px;
 }
 
 .stepper-step {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px 16px;
-  border-radius: 12px;
-  background-color: #EDF2E7;
-  color: #1C2D27;
+  padding: 10px 16px;
+  border-radius: 9999px;
+  background-color: #FCFAF3;
+  color: #15221B;
   font-weight: 500;
-  font-size: 16px;
-  border: 1px solid #D8E2DC;
+  font-size: 15px !important;
+  border: 1px solid #DED9C8;
+  transition: all 0.15s ease;
 }
 
 .stepper-step.active {
-  background-color: #2D6A4F;
-  color: #FFFBEB;
-  font-weight: 700;
-  border-color: #2D6A4F;
-}
-
-/* Stepper Next button styling */
-.stepper-next button,
-div[data-testid="stButton"].stepper-next > button,
-button.stepper-next {
-  background-color: #2D6A4F !important;
-  color: #FFFBEB !important;
-  border-radius: 12px !important;
-  padding: 10px 24px !important;
-  font-size: 16px !important;
+  background-color: #1B4D3E !important;
+  color: #F6F4EB !important;
   font-weight: 600 !important;
-  border: none !important;
+  border-color: #1B4D3E !important;
+  box-shadow: 0 2px 6px rgba(27, 77, 62, 0.2) !important;
 }
 
-.stepper-next button:hover,
-div[data-testid="stButton"].stepper-next > button:hover {
-  background-color: #1B4332 !important;
-  color: #FFFBEB !important;
+/* Primary Tactile Buttons */
+button,
+div[data-testid="stButton"] > button,
+.stepper-next button {
+  background-color: #1B4D3E !important;
+  color: #F6F4EB !important;
+  border-radius: 9999px !important;
+  padding: 10px 26px !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  border: 1px solid #1B4D3E !important;
+  box-shadow: 0 2px 5px rgba(27, 77, 62, 0.15) !important;
+  transition: all 0.18s ease !important;
 }
 
-/* Notice / Hint banner */
+button:hover,
+div[data-testid="stButton"] > button:hover {
+  background-color: #13392E !important;
+  border-color: #13392E !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 10px rgba(27, 77, 62, 0.25) !important;
+}
+
+/* 8. Field Note Callouts & Hints */
 .eco-hint {
-  background-color: #EDF2E7;
-  border-left: 4px solid #2D6A4F;
-  padding: 16px;
-  border-radius: 12px;
-  margin: 16px 0;
-  color: #1C2D27;
-  font-size: 16px;
+  background-color: #EBF3ED !important;
+  border-left: 4px solid #2E6F40 !important;
+  padding: 14px 18px !important;
+  border-radius: 10px !important;
+  margin: 16px 0 !important;
+  color: #15221B !important;
+  font-size: 15px !important;
 }
 
 .eco-warning {
-  background-color: #FEF3C7;
-  border-left: 4px solid #DDA15E;
-  padding: 16px;
-  border-radius: 12px;
-  margin: 16px 0;
-  color: #92400E;
-  font-size: 16px;
+  background-color: #FDF6E2 !important;
+  border-left: 4px solid #C88A35 !important;
+  padding: 14px 18px !important;
+  border-radius: 10px !important;
+  margin: 16px 0 !important;
+  color: #8C5E1E !important;
+  font-size: 15px !important;
+}
+
+/* 9. Metric Display Tiles */
+.eco-metric-card {
+  background-color: #FCFAF3 !important;
+  border: 1px solid #DED9C8 !important;
+  border-radius: 14px !important;
+  padding: 18px !important;
+  text-align: center !important;
+  box-shadow: 0 2px 6px rgba(21, 34, 27, 0.03) !important;
+}
+
+.eco-metric-value {
+  font-family: 'Fraunces', Georgia, serif !important;
+  font-size: 30px !important;
+  font-weight: 700 !important;
+  color: #1B4D3E !important;
+  line-height: 1.1 !important;
+}
+
+.eco-metric-label {
+  font-size: 14px !important;
+  color: #5A6B60 !important;
+  margin-top: 4px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
 }
 
 /* Tier Footnote */
 .tier-footnote {
-  font-size: 14px !important;
-  color: #52796F;
-  font-style: italic;
-  margin-top: 16px;
-  padding-top: 8px;
-  border-top: 1px solid #EDF2E7;
-}
-
-/* Metric Display card */
-.eco-metric-card {
-  background-color: #FFFFFF;
-  border: 1px solid #EDF2E7;
-  border-radius: 16px;
-  padding: 18px;
-  text-align: center;
-}
-
-.eco-metric-value {
-  font-size: 28px !important;
-  font-weight: 700;
-  color: #2D6A4F;
-}
-
-.eco-metric-label {
-  font-size: 16px !important;
-  color: #52796F;
+  font-family: 'Space Mono', monospace !important;
+  font-size: 12px !important;
+  color: #7A8B80 !important;
+  margin-top: 20px !important;
+  padding-top: 8px !important;
+  border-top: 1px dashed #DED9C8 !important;
 }
