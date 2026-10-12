@@ -242,6 +242,18 @@ def check_file(
                     raise ValueError(msg)
                 return False, msg
 
+    if file_path.name in {"ingredients.csv", "good_ingredients.csv"}:
+        if "basis" not in df.columns:
+            msg = f"Missing mandatory 'basis' column in {file_path.name}"
+            if raise_on_error:
+                raise ValueError(msg)
+            return False, msg
+        if not (df["basis"].astype(str).str.lower().str.strip() == "dry").all():
+            msg = f"Non-dry basis found in {file_path.name} (all feedstocks must have basis='dry')"
+            if raise_on_error:
+                raise ValueError(msg)
+            return False, msg
+
     return True, "OK"
 
 
