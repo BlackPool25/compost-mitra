@@ -1,0 +1,112 @@
+{
+  "disclaimer": "Tier 2 screening aid (proxy sanity, not proof); observational association only.",
+  "n_scored": 3,
+  "model_source": "trained-in-memory:GI>=80:sensor:seed42",
+  "scores": [
+    {
+      "blend": {
+        "cn": 26.95,
+        "ph": 6.93,
+        "moist_pct": 71.51
+      },
+      "sensor_vector": {
+        "day": 21.0,
+        "temp": 32.0,
+        "moist_pct": 71.51,
+        "ph": 6.93,
+        "cn": 26.95,
+        "nh3": 710.44,
+        "no3": 247.8881,
+        "tn": 1.8371,
+        "toc": 32.672,
+        "ec": 1.9997,
+        "om": 62.832
+      },
+      "gates": {
+        "cn_start_25_35": true,
+        "cn_mature_le20": false,
+        "ph_6_7p5": true,
+        "moist_50_60": false,
+        "all_start_pass": false
+      },
+      "model_source": "trained-in-memory:GI>=80:sensor:seed42",
+      "disclaimer": "Tier 2 screening aid (proxy sanity, not proof); pre-pile recipe profile is not an in-situ sensor reading. Observational association only.",
+      "p_mature_rf": 0.4868,
+      "p_mature_rf_note": "(proxy sanity, not proof)",
+      "p_mature_xgb": 0.4221,
+      "p_mature_xgb_note": "(proxy sanity, not proof)",
+      "p_mature": 0.4221,
+      "p_mature_note": "(proxy sanity, not proof)"
+    },
+    {
+      "blend": {
+        "cn": 26.63,
+        "ph": 6.93,
+        "moist_pct": 69.28
+      },
+      "sensor_vector": {
+        "day": 21.0,
+        "temp": 32.0,
+        "moist_pct": 69.28,
+        "ph": 6.93,
+        "cn": 26.63,
+        "nh3": 710.44,
+        "no3": 247.8881,
+        "tn": 1.8371,
+        "toc": 32.672,
+        "ec": 1.9997,
+        "om": 62.832
+      },
+      "gates": {
+        "cn_start_25_35": true,
+        "cn_mature_le20": false,
+        "ph_6_7p5": true,
+        "moist_50_60": false,
+        "all_start_pass": false
+      },
+      "model_source": "trained-in-memory:GI>=80:sensor:seed42",
+      "disclaimer": "Tier 2 screening aid (proxy sanity, not proof); pre-pile recipe profile is not an in-situ sensor reading. Observational association only.",
+      "p_mature_rf": 0.4787,
+      "p_mature_rf_note": "(proxy sanity, not proof)",
+      "p_mature_xgb": 0.3778,
+      "p_mature_xgb_note": "(proxy sanity, not proof)",
+      "p_mature": 0.3778,
+      "p_mature_note": "(proxy sanity, not proof)"
+    },
+    {
+      "blend": {
+        "cn": 24.94,
+        "ph": 6.91,
+        "moist_pct": 61.58
+      },
+      "sensor_vector": {
+        "day": 21.0,
+        "temp": 32.0,
+        "moist_pct": 61.58,
+        "ph": 6.91,
+        "cn": 24.94,
+        "nh3": 710.44,
+        "no3": 247.8881,
+        "tn": 1.8371,
+        "toc": 32.672,
+        "ec": 1.9997,
+        "om": 62.832
+      },
+      "gates": {
+        "cn_start_25_35": false,
+        "cn_mature_le20": false,
+        "ph_6_7p5": true,
+        "moist_50_60": false,
+        "all_start_pass": false
+      },
+      "model_source": "trained-in-memory:GI>=80:sensor:seed42",
+      "disclaimer": "Tier 2 screening aid (proxy sanity, not proof); pre-pile recipe profile is not an in-situ sensor reading. Observational association only.",
+      "p_mature_rf": 0.4786,
+      "p_mature_rf_note": "(proxy sanity, not proof)",
+      "p_mature_xgb": 0.433,
+      "p_mature_xgb_note": "(proxy sanity, not proof)",
+      "p_mature": 0.433,
+      "p_mature_note": "(proxy sanity, not proof)"
+    }
+  ]
+}
